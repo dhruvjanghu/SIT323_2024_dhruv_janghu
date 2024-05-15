@@ -1,0 +1,33 @@
+# defining the kubernetes api version that we'll use for the deployment 
+apiVersion: apps/v1 
+# kind specifies that we are creating a deployment 
+kind: Deployment
+# povides the setting that help identify deployment 
+metadata:
+  name: calculator-deployment
+
+  labels:
+    app: calculator # used label here because it helps organise and select groups of objects 
+    
+    # here, defining the desired state of deployment 
+spec:
+  replicas: 2 # we want 2 copies of my app running 
+  # this will specify how the deployments find pod it manages 
+  selector:
+    matchLabels:
+      app: calculator # this should match the label on pods that deployment manages 
+
+      # template will define the pods to launch 
+  template:
+    metadata:
+      labels:
+        app: calculator # this is the template that will be used assign label to all the pods created
+
+        # now defining the configuration o the containers (in pods)
+    spec:
+      containers:
+      - name: calculator # name of the container in pod
+        image: calculator-service:latest #the docker image to use 
+        imagePullPolicy: IfNotPresent # tells kubernetes to use a local image ( if avalaible)
+        ports:
+        - containerPort: 3000 # the port container exposes 

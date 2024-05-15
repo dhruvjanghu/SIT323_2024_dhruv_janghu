@@ -1,0 +1,17 @@
+# apiVersion tells kubernetes what version of configuration we are using 
+apiVersion: v1 # we are using version: v1
+# it tells kubernetes what we are creating
+kind: Service # we are creating a service
+# and this is where we give my service a name 
+metadata:
+  name: calculator-service # name of my service 
+  # now this is where we define the charaterstics of my service 
+spec:
+  type: LoadBalancer # loadbalancer makes my service accessible outside the server 
+  # these are the list of ports 
+  ports:
+  - port: 80 # the port that other people will use to access our service. 
+    targetPort: 3000
+    # and selector is used to find the pods that the service should route traffic to 
+  selector:
+    app: calculator

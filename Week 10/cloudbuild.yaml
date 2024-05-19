@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'australia-southeast1-docker.pkg.dev/sit323-24t1-janghu-05d700b/my-repo/my-node-app:latest', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'australia-southeast1-docker.pkg.dev/sit323-24t1-janghu-05d700b/my-repo/my-node-app:latest']
+images:
+- 'australia-southeast1-docker.pkg.dev/sit323-24t1-janghu-05d700b/my-repo/my-node-app:latest'

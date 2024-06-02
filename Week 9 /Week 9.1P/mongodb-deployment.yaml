@@ -21,6 +21,6 @@ spec:
         - containerPort: 27017
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
-          value: Dhruv # Change this if your username is different
+          value: Dhruv 
         - name: MONGO_INITDB_ROOT_PASSWORD
-          value: s222310444  # Change this if your password is different
+          value: s222310444  
